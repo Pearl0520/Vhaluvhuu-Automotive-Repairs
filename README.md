@@ -22,7 +22,7 @@ The website has the following main pages:
 
 ## Design and Colours
 
-I used the colours **red, black, white and grey** throughout the website because they match the Vhaluvhuu Automotive Repairs logo and give the website a strong automotive look.
+I used the colours **red, black and white** throughout the website because they match the Vhaluvhuu Automotive Repairs logo and give the website a strong automotive look.
 
 The website uses the tagline:
 
