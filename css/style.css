@@ -5,37 +5,215 @@
 }
 
 body {
-    margin: 10px;
-    padding: 10px;
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #ffffff;
-    color: #222222;
+    color: #111111;
     font-size: 16px;
+    line-height: 1.6;
 }
+
 h1 {
-    font-family: monospace;
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: #d40000;
+    margin: 0;
     text-align: center;
-    font-size: 40px;
-    font-weight: bold;
-    color: #c00000;
-    text-decoration: underline;
-    text-transform: uppercase;
-    border: 5px solid #222222;
-    padding: 10px;
-    border-radius: 20px;
-    background-color: #ffffff;
+    width: 100%;
+    display: block;
 }
+
 h2 {
     font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
     font-size: 20px;
-    font-weight: bold;
-    color: #c00000;
-    text-decoration: wavy; 
+    color: #d40000;
+    margin-bottom: 15px;
 }
-nav a{
+
+h3 {
+    color: #d40000;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    color: #d40000;
+    text-decoration: none;
+}
+
+.site-header {
+    background-color: #111111;
+    color: #ffffff;
+    padding: 20px 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand {
+    position: relative;
+    width: 100%;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    position: absolute;
+    left: 0;
+    top: 18%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: #ffffff;
+    padding: 6px;
+    border: 3px solid #d40000;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+nav a {
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
-    padding: 10px;
-    color
+    padding: 10px 12px;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+nav a:hover {
+    background-color: #d40000;
+    color: #ffffff;
+}
+
+img[alt="hero"] {
+    display: block;
+    width: min(90vw, 550px);
+    height: auto;
+    margin: 20px auto 30px;
+}
+
+main {
+    padding: 30px 20px;
+}
+
+section {
+    margin-bottom: 25px;
+}
+
+footer {
+    background-color: #111111;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a,
+footer p {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .site-header {
+        padding: 15px 15px 10px;
+    }
+
+    .brand {
+        min-height: 80px;
+        padding-left: 110px;
+        justify-content: flex-start;
+    }
+
+    .logo {
+        left: 0;
+        top: 50%;
+        width: 88px;
+        height: 88px;
+    }
+
+    h1 {
+        font-size: clamp(1.3rem, 4vw, 1.9rem);
+        text-align: left;
+        width: auto;
+    }
+
+    nav {
+        gap: 6px;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+        padding: 8px 9px;
+    }
+
+    img[alt="hero"] {
+        width: min(92vw, 480px);
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header {
+        padding: 12px 10px 8px;
+    }
+
+    .brand {
+        min-height: 70px;
+        padding-left: 90px;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+        top: 50%;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        line-height: 1.2;
+        text-align: left;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        gap: 6px;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    main {
+        padding: 20px 15px;
+    }
+
+    section {
+        margin-bottom: 20px;
+    }
 }
