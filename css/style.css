@@ -115,6 +115,16 @@ img[alt="hero"] {
     background-color: #f3f3f3;
 }
 
+main img {
+    display: inline-block;
+    width: min(100%, 320px);
+    height: 320px;
+    max-width: 100%;
+    object-fit: contain;
+    background-color: #f3f3f3;
+    vertical-align: middle;
+}
+
 main {
     padding: 30px 20px;
 }
@@ -171,6 +181,11 @@ footer p {
 
     img[alt="hero"] {
         width: min(92vw, 480px);
+    }
+
+    main img {
+        width: min(100%, 280px);
+        height: 280px;
     }
 }
 
