@@ -7,7 +7,7 @@ All notable changes to the Vhaluvhuu Automotive Repairs website are documented h
 ### Added
 
 - Added this project [changelog](CHANGELOG.md).
-- Added front-end styling for form controls and responsive content images in [css/style.css](css/style.css).
+- Added responsive content image styling in [css/style.css](css/style.css).
 
 ### Changed
 
