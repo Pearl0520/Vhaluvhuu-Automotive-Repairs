@@ -50,13 +50,15 @@ Vhaluvhuu Automotive Repairs/
 ├── index.html
 ├── about.html
 ├── services.html
-├── inquiry.html
+├── enquiry.html
 ├── contact.html
-├── style.css
+├── css/
+│   └── style.css
+├── js/
 └── images/
 ```
 
-The `index.html` file is the homepage of the website, while the other HTML files contain the different sections of the website. The `style.css` file controls the overall appearance of the website.
+The `index.html` file is the homepage of the website, while the other HTML files contain the different sections of the website. The `css/style.css` file controls the overall appearance of the website. The `js/` directory is reserved for future interactive features.
 
 ## Purpose of the Website
 
@@ -81,7 +83,7 @@ I also made sure that the pages followed a consistent design so that the website
 
 **Completed**
 
-The website pages have been created, styled and uploaded to GitHub Pages.
+The website pages have been created, styled and prepared for deployment to GitHub Pages. The enquiry and contact forms currently provide the front-end fields only; a form-processing service is required to receive submissions.
 
 ## Project Year
 
