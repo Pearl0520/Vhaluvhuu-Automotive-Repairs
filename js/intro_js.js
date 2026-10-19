@@ -50,6 +50,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    const dateTimeDisplay = document.getElementById("currentDateTime");
+
+    if (dateTimeDisplay) {
+        function updateDateTime() {
+            const now = new Date();
+            dateTimeDisplay.dateTime = now.toISOString();
+            dateTimeDisplay.textContent = new Intl.DateTimeFormat(undefined, {
+                dateStyle: "full",
+                timeStyle: "medium"
+            }).format(now);
+        }
+
+        updateDateTime();
+        window.setInterval(updateDateTime, 1000);
+    }
+
     const clickMeButton = document.getElementById("clickMeButton");
     const clickMeMessage = document.getElementById("clickMeMessage");
 
