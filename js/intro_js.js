@@ -1,6 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
+    if (currentPage === "index.html" && sessionStorage.getItem("welcomeShown") !== "true") {
+        const welcomeDialog = document.createElement("dialog");
+        welcomeDialog.setAttribute("aria-labelledby", "welcome-title");
+        welcomeDialog.style.cssText =
+            "width:min(90vw,480px);padding:30px;border:0;border-top:6px solid #c8102e;" +
+            "background:#fff;color:#171717;text-align:center;box-shadow:0 18px 60px #0006;";
+
+        const welcomeTitle = document.createElement("h2");
+        welcomeTitle.id = "welcome-title";
+        welcomeTitle.textContent = "Welcome to Vhaluvhuu Automotive Repairs";
+        welcomeTitle.style.cssText = "margin:0 0 12px;color:#c8102e;font-size:1.5rem;";
+
+        const welcomeText = document.createElement("p");
+        welcomeText.textContent =
+            "Reliable, professional, and trusted automotive repairs. How can we help you today?";
+
+        const welcomeButton = document.createElement("button");
+        welcomeButton.type = "button";
+        welcomeButton.textContent = "Explore our services";
+        welcomeButton.style.cssText =
+            "padding:10px 16px;border:0;border-radius:3px;background:#c8102e;color:#fff;" +
+            "font:inherit;font-weight:700;cursor:pointer;";
+        welcomeButton.addEventListener("click", function () {
+            welcomeDialog.close();
+        });
+
+        welcomeDialog.append(welcomeTitle, welcomeText, welcomeButton);
+        document.body.appendChild(welcomeDialog);
+        welcomeDialog.addEventListener("close", function () {
+            sessionStorage.setItem("welcomeShown", "true");
+        });
+        welcomeDialog.showModal();
+        welcomeButton.focus();
+
+        window.setTimeout(function () {
+            if (welcomeDialog.open) {
+                welcomeDialog.close();
+            }
+        }, 15000);
+    }
+
     document.querySelectorAll("nav a").forEach(function (link) {
         const linkPage = new URL(link.href).pathname.split("/").pop();
 
@@ -9,15 +50,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    const clickMeButton = document.getElementById("clickMeButton");
+    const clickMeMessage = document.getElementById("clickMeMessage");
+
+    if (clickMeButton && clickMeMessage) {
+        clickMeButton.addEventListener("click", function () {
+            clickMeMessage.hidden = false;
+            clickMeButton.textContent = "Thanks for clicking!";
+            clickMeButton.disabled = true;
+        });
+    }
+
     const bookingDate = document.getElementById("date");
 
     if (bookingDate) {
         const now = new Date();
-        const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+        bookingDate.min = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
             .toISOString()
             .slice(0, 10);
-
-        bookingDate.min = today;
     }
 
     document.querySelectorAll("form").forEach(function (form) {
@@ -58,13 +108,24 @@ document.addEventListener("DOMContentLoaded", function () {
             feedback.textContent =
                 "Your information is valid, but this website is not set up to send submissions yet.";
         });
+
+        form.addEventListener("reset", function () {
+            const feedback = form.nextElementSibling;
+
+            if (feedback && feedback.classList.contains("form-feedback")) {
+                feedback.remove();
+            }
+        });
     });
 
     const lightbox = document.createElement("dialog");
     lightbox.setAttribute("aria-label", "Expanded image");
     lightbox.style.cssText =
-        "max-width:90vw;max-height:90vh;padding:12px;border:0;" +
-        "background:#171717;color:#fff;";
+        "max-width:90vw;max-height:90vh;padding:12px;border:0;background:#171717;color:#fff;";
+
+    const enlargedImage = document.createElement("img");
+    enlargedImage.style.cssText =
+        "display:block;max-width:85vw;max-height:78vh;object-fit:contain;margin-bottom:10px;";
 
     const closeButton = document.createElement("button");
     closeButton.type = "button";
@@ -73,11 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
         lightbox.close();
     });
 
-    const expandedImage = document.createElement("img");
-    expandedImage.style.cssText =
-        "display:block;max-width:85vw;max-height:78vh;object-fit:contain;margin-bottom:10px;";
-
-    lightbox.append(expandedImage, closeButton);
+    lightbox.append(enlargedImage, closeButton);
     document.body.appendChild(lightbox);
 
     document.querySelectorAll("main img").forEach(function (image) {
@@ -87,8 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
         image.style.cursor = "zoom-in";
 
         function openImage() {
-            expandedImage.src = image.src;
-            expandedImage.alt = image.alt;
+            enlargedImage.src = image.src;
+            enlargedImage.alt = image.alt;
             lightbox.showModal();
             closeButton.focus();
         }
@@ -98,17 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
                 openImage();
-            }
-        });
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener("click", function (event) {
-            const target = document.getElementById(link.hash.slice(1));
-
-            if (target) {
-                event.preventDefault();
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         });
     });
