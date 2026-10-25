@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const welcomeDialog = document.createElement("dialog");
         welcomeDialog.setAttribute("aria-labelledby", "welcome-title");
         welcomeDialog.style.cssText =
-            "width:min(90vw,480px);padding:30px;border:0;border-top:6px solid #c8102e;" +
+            "width:min(88vw,400px);padding:22px;border:0;border-top:5px solid #c8102e;" +
             "background:#fff;color:#171717;text-align:center;box-shadow:0 18px 60px #0006;";
 
         const welcomeTitle = document.createElement("h2");
         welcomeTitle.id = "welcome-title";
         welcomeTitle.textContent = "Welcome to Vhaluvhuu Automotive Repairs";
-        welcomeTitle.style.cssText = "margin:0 0 12px;color:#c8102e;font-size:1.5rem;";
+        welcomeTitle.style.cssText = "margin:0 0 8px;color:#c8102e;font-size:1.25rem;";
 
         const welcomeText = document.createElement("p");
         welcomeText.textContent =
@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
         welcomeButton.type = "button";
         welcomeButton.textContent = "Explore our services";
         welcomeButton.style.cssText =
-            "padding:10px 16px;border:0;border-radius:3px;background:#c8102e;color:#fff;" +
-            "font:inherit;font-weight:700;cursor:pointer;";
+            "padding:8px 13px;border:0;border-radius:3px;background:#c8102e;color:#fff;" +
+            "font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;";
         welcomeButton.addEventListener("click", function () {
             welcomeDialog.close();
         });

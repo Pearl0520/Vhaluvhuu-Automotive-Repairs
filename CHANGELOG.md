@@ -2,6 +2,18 @@
 
 All notable changes to the Vhaluvhuu Automotive Repairs website are documented here.
 
+## [2026-10-25]
+
+### Added
+
+- Added [js/main.js](js/main.js) to provide interactive JavaScript features across the website.
+- Added a homepage welcome popup that closes after 15 seconds, a live local date and time display, and the homepage "Click on me" interaction.
+- Added client-side form validation, prevention of past booking dates, and keyboard-accessible image enlargement.
+
+### Changed
+
+- Updated [README.md](README.md) with Part 3 JavaScript enhancement details and the current project file structure.
+
 ## [2026-09-17]
 
 ### Added

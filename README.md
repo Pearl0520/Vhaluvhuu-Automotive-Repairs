@@ -36,9 +36,22 @@ The website was created using:
 
 * **HTML** – Used to create the different webpages and their content.
 * **CSS** – Used to style the website, including the colours, fonts, layout and spacing.
+* **JavaScript** – Used to add interactive features such as a timed welcome popup, a live date and time display, form checks and image enlargement.
 * **Google Maps** – Used to show the location of the business.
 * **GitHub** – Used to store the website files and manage the project.
 * **GitHub Pages** – Used to publish the website online.
+
+## Part 3: JavaScript Enhancements
+
+The `js/main.js` file adds interactive features to the website:
+
+* Shows a welcome popup on the homepage and closes it automatically after 15 seconds. Visitors can also close it sooner using the button or Escape key.
+* Displays the visitor's local date and time on the homepage and updates it every second.
+* Shows a response and booking link when the homepage "Click on me" button is selected.
+* Highlights the current page in the navigation menu.
+* Prevents selecting a booking date earlier than today.
+* Checks that form fields meet the basic requirements before showing a confirmation. Form submissions are not sent to the business because a form-processing service is not connected yet.
+* Lets visitors enlarge main-page images using a mouse or keyboard.
 
 ## Website Files
 
@@ -55,10 +68,11 @@ Vhaluvhuu Automotive Repairs/
 ├── css/
 │   └── style.css
 ├── js/
+│   └── main.js
 └── images/
 ```
 
-The `index.html` file is the homepage of the website, while the other HTML files contain the different sections of the website. The `css/style.css` file controls the overall appearance of the website. The `js/` directory is reserved for future interactive features.
+The `index.html` file is the homepage, while the other HTML files contain the remaining pages. The `css/style.css` file controls the website's appearance, and `js/main.js` provides its interactive features.
 
 ## Purpose of the Website
 
