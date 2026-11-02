@@ -50,6 +50,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    document.querySelectorAll(".site-header nav").forEach(function (navigation) {
+        const menuToggle = navigation.querySelector(".nav-toggle");
+        const menuLabel = menuToggle.querySelector(".visually-hidden");
+        const mobileLayout = window.matchMedia("(max-width: 768px)");
+
+        function setMenuOpen(isOpen) {
+            navigation.classList.toggle("is-open", isOpen);
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuLabel.textContent = isOpen ? "Close navigation menu" : "Open navigation menu";
+        }
+
+        menuToggle.addEventListener("click", function () {
+            setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+        });
+
+        navigation.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+                setMenuOpen(false);
+                menuToggle.focus();
+            }
+        });
+
+        navigation.querySelectorAll(".nav-links a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                if (mobileLayout.matches) {
+                    setMenuOpen(false);
+                }
+            });
+        });
+
+        mobileLayout.addEventListener("change", function (event) {
+            if (!event.matches) {
+                setMenuOpen(false);
+            }
+        });
+    });
+
     const dateTimeDisplay = document.getElementById("currentDateTime");
 
     if (dateTimeDisplay) {
