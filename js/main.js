@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const welcomeDialog = document.createElement("dialog");
         welcomeDialog.setAttribute("aria-labelledby", "welcome-title");
         welcomeDialog.style.cssText =
-            "width:min(88vw,400px);padding:22px;border:0;border-top:5px solid #c8102e;" +
+            "width:min(82vw,360px);padding:18px;border:0;border-top:5px solid #c8102e;" +
             "background:#fff;color:#171717;text-align:center;box-shadow:0 18px 60px #0006;";
 
         const welcomeTitle = document.createElement("h2");
         welcomeTitle.id = "welcome-title";
         welcomeTitle.textContent = "Welcome to Vhaluvhuu Automotive Repairs";
-        welcomeTitle.style.cssText = "margin:0 0 8px;color:#c8102e;font-size:1.25rem;";
+        welcomeTitle.style.cssText = "margin:0 0 8px;color:#c8102e;font-size:1.15rem;";
 
         const welcomeText = document.createElement("p");
         welcomeText.textContent =
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         welcomeButton.textContent = "Explore our services";
         welcomeButton.style.cssText =
             "padding:8px 13px;border:0;border-radius:3px;background:#c8102e;color:#fff;" +
-            "font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;";
+            "font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;";
         welcomeButton.addEventListener("click", function () {
             welcomeDialog.close();
         });
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (welcomeDialog.open) {
                 welcomeDialog.close();
             }
-        }, 15000);
+        }, 5000);
     }
 
     document.querySelectorAll("nav a").forEach(function (link) {
@@ -80,13 +80,86 @@ document.addEventListener("DOMContentLoaded", function () {
     const bookingDate = document.getElementById("date");
 
     if (bookingDate) {
-        const now = new Date();
-        bookingDate.min = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
-            .toISOString()
-            .slice(0, 10);
+        function validateBookingDate() {
+            const value = bookingDate.value.trim();
+            bookingDate.setCustomValidity("");
+
+            if (!value || !/^\d{2}\/\d{2}\/\d{4}$/.test(value)) {
+                return;
+            }
+
+            const parts = value.split("/").map(Number);
+            const day = parts[0];
+            const month = parts[1];
+            const year = parts[2];
+            const selectedDate = new Date(year, month - 1, day);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (
+                selectedDate.getFullYear() !== year ||
+                selectedDate.getMonth() !== month - 1 ||
+                selectedDate.getDate() !== day
+            ) {
+                bookingDate.setCustomValidity("Enter a valid calendar date.");
+            } else if (selectedDate < today) {
+                bookingDate.setCustomValidity("Choose today or a future date.");
+            }
+        }
+
+        bookingDate.addEventListener("input", validateBookingDate);
+        bookingDate.addEventListener("change", validateBookingDate);
+    }
+
+    const callbackButton = document.getElementById("callback-button");
+    const callbackDialog = document.getElementById("callback-dialog");
+    const callbackForm = document.getElementById("callback-form");
+    const callbackCancel = document.getElementById("callback-cancel");
+
+    if (callbackButton && callbackDialog && callbackForm && callbackCancel) {
+        callbackButton.addEventListener("click", function () {
+            callbackDialog.showModal();
+            callbackForm.querySelector('[name="name"]').focus();
+        });
+
+        callbackCancel.addEventListener("click", function () {
+            callbackDialog.close();
+            callbackButton.focus();
+        });
+
+        callbackForm.addEventListener("submit", function (event) {
+            const name = callbackForm.querySelector('[name="name"]');
+            const phone = callbackForm.querySelector('[name="phone"]');
+            const details = callbackForm.querySelector('[name="details"]');
+            const message = callbackForm.querySelector('[name="text"]');
+
+            if (name.value.trim().length < 2) {
+                event.preventDefault();
+                name.setCustomValidity("Please enter your name.");
+                name.reportValidity();
+                name.setCustomValidity("");
+                return;
+            }
+
+            const request = [
+                "I would like to request a callback.",
+                "Name: " + name.value.trim(),
+                "Phone: " + phone.value.trim()
+            ];
+
+            if (details.value.trim()) {
+                request.push("Callback details: " + details.value.trim());
+            }
+
+            message.value = request.join("\n");
+        });
     }
 
     document.querySelectorAll("form").forEach(function (form) {
+        if (form.id === "callback-form") {
+            return;
+        }
+
         form.addEventListener("submit", function (event) {
             event.preventDefault();
 

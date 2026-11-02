@@ -9,6 +9,10 @@
 <body>
 
     <header class="site-header">
+        <p class="current-datetime">
+            Current date and time: <time id="currentDateTime"></time>
+        </p>
+
         <nav>
             <a href="index.html">Homepage</a>
             <a href="about.html">About Us</a>
@@ -23,11 +27,9 @@
         </div>
     </header>
 
-    <img src="images/homepage.jpeg" alt="hero" width="550px" height="550px">
-
     <main>
 
-        <section>
+        <section class="home-hero">
 
             <h2>Reliable, Professional, Trusted</h2>
 
@@ -37,12 +39,81 @@
                 automotive repair and maintenance services 
                 to help keep your vehicle safe and roadworthy.
             </p>
-            <p class="current-datetime">
-                Current date and time: <time id="currentDateTime"></time>
-            </p>
             <a href="enquiry.html">Book a Service</a>
+            <a
+                class="whatsapp-button"
+                href="https://wa.me/27826744957?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20your%20automotive%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat with Vhaluvhuu Automotive Repairs on WhatsApp at 082 674 4957">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                    <path d="M16 3.5a12 12 0 0 0-10.3 18.2L4 28l6.5-1.7A12 12 0 1 0 16 3.5Z"
+                        fill="none" stroke="#fff" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" />
+                    <path d="M12.1 10.1c-.3-.7-.7-.7-1-.7h-.8c-.3 0-.8.1-1.2.6-.4.4-1.5 1.4-1.5 3.5s1.5 4 1.7 4.3c.2.3 2.9 4.6 7.1 6.2 3.5 1.4 4.2 1.1 5 .9.8-.2 2.5-1 2.9-2 .4-1 .4-1.8.3-2-.1-.2-.4-.3-.9-.6l-2.7-1.3c-.4-.2-.7-.3-1 .3-.3.5-1.1 1.3-1.4 1.6-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.4-1.4-1.2-2.3-2.8-2.6-3.3-.3-.5 0-.7.2-.9l.7-.8c.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8l-1.2-2.9Z"
+                        fill="#fff" />
+                </svg>
+            </a>
+            <button
+                class="call-button"
+                id="callback-button"
+                type="button"
+                aria-label="Request a callback from Vhaluvhuu Automotive Repairs"
+                aria-haspopup="dialog"
+                aria-controls="callback-dialog">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                    <path d="M5 3h4l2 5-2.5 1.5a15 15 0 0 0 6 6L16 13l5 2v4c0 1.1-.9 2-2 2C10 21 3 14 3 5c0-1.1.9-2 2-2Z"
+                        fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" />
+                </svg>
+            </button>
 
         </section>
+
+        <dialog class="callback-dialog" id="callback-dialog" aria-labelledby="callback-title">
+            <h2 id="callback-title">Request a Callback</h2>
+            <p>
+                Enter your details. WhatsApp will open with your request so you can review it
+                and send it to 082 674 4957.
+            </p>
+            <form
+                class="callback-form"
+                id="callback-form"
+                action="https://wa.me/27826744957"
+                method="get"
+                target="_blank">
+                <input type="hidden" name="text" id="callback-whatsapp-message">
+
+                <label for="callback-name"><svg class="field-icon" aria-hidden="true"><use href="images/form-icons.svg#person"></use></svg>Your name</label>
+                <input
+                    id="callback-name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    minlength="2"
+                    maxlength="100"
+                    required>
+
+                <label for="callback-phone"><svg class="field-icon" aria-hidden="true"><use href="images/form-icons.svg#phone"></use></svg>Phone number</label>
+                <input
+                    id="callback-phone"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel"
+                    inputmode="tel"
+                    pattern="[0-9+() -]{7,20}"
+                    title="Enter a phone number using digits, spaces, +, parentheses, or hyphens."
+                    required>
+
+                <label for="callback-details"><svg class="field-icon" aria-hidden="true"><use href="images/form-icons.svg#message"></use></svg>What should we call you about? (optional)</label>
+                <textarea id="callback-details" name="details" rows="3" maxlength="500"></textarea>
+
+                <div class="callback-form-actions">
+                    <button class="callback-submit" type="submit">Continue to WhatsApp</button>
+                    <button class="callback-cancel" id="callback-cancel" type="button">Cancel</button>
+                </div>
+            </form>
+        </dialog>
 
         <section>
 
@@ -77,6 +148,30 @@
 
             <a href="services.html">View Our Services</a>
 
+        </section>
+
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <details>
+                <summary>What automotive services do you offer?</summary>
+                <p>We offer engine and brake repairs, vehicle diagnostics, oil and filter services, suspension repairs, and battery services.</p>
+            </details>
+
+            <details>
+                <summary>How can I book a service?</summary>
+                <p>Send us your enquiry through the <a href="enquiry.html">Enquiry page</a> and include details about your vehicle and the service you need.</p>
+            </details>
+
+            <details>
+                <summary>Can you diagnose a problem with my vehicle?</summary>
+                <p>Yes. Vehicle diagnostics are among our services. Contact us with a description of the issue to enquire.</p>
+            </details>
+
+            <details>
+                <summary>How can I contact you?</summary>
+                <p>Visit our <a href="contact.html">Contact page</a> for ways to get in touch.</p>
+            </details>
         </section>
 
         <section>
