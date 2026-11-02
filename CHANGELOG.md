@@ -2,6 +2,17 @@
 
 All notable changes to the Vhaluvhuu Automotive Repairs website are documented here.
 
+## [2026-11-02]
+
+### Added
+
+- Added WhatsApp contact buttons across the website and a homepage callback request dialog that opens WhatsApp with a prefilled message.
+- Added a homepage FAQ section and reusable SVG icons for form fields.
+
+### Changed
+
+- Refreshed the responsive styling and layout of the website's contact and enquiry forms.
+
 ## [2026-10-25]
 
 ### Added
